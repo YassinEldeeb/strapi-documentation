@@ -36,14 +36,14 @@ yarn strapi install graphql
 Then, start your app and open your browser at [http://localhost:1337/graphql](http://localhost:1337/graphql). You should now be able to access the **GraphQL Playground** that will help you to write your GraphQL queries and mutations.
 
 :::note
-The GraphQL Playground is enabled by default for both the development and staging environments, but disabled in production environments. Set the `playgroundAlways` configuration option to `true` to also enable the GraphQL Playground in production environments (see [plugins configuration documentation](/developer-docs/latest/setup-deployment-guides/configurations/optional/plugins.md#graphql-configuration)).
+The GraphQL Playground is enabled by default for both the development and staging environments, but disabled in production environments. Set the `browserIDEAlways` configuration option to `true` to also enable the GraphQL Playground in production environments (see [plugins configuration documentation](/developer-docs/latest/setup-deployment-guides/configurations/optional/plugins.md#graphql-configuration)).
 :::
 
 ## Configuration
 
 Plugins configuration are defined in the `config/plugins.js` file. This configuration file can include a `graphql.config` object to define specific configurations for the GraphQL plugin (see [plugins configuration documentation](/developer-docs/latest/setup-deployment-guides/configurations/optional/plugins.md#graphql-configuration)).
 
-[Apollo Server](https://www.apollographql.com/docs/apollo-server/api/apollo-server/#apolloserver) options can be set with the `graphql.config.apolloServer` [configuration object](/developer-docs/latest/setup-deployment-guides/configurations/optional/plugins.md#graphql-configuration). Apollo Server options can be used for instance to enable the [tracing feature](https://www.apollographql.com/docs/federation/metrics/), which is supported by the GraphQL playground to track the response time of each part of your query. From `Apollo Server` version 3.9 default cache option is `cache: 'bounded'`. You can change it in the `apolloServer` configuration. For more information visit [Apollo Server Docs](https://www.apollographql.com/docs/apollo-server/performance/cache-backends/).
+[GraphQL Yoga v3 Server](https://the-guild.dev/graphql/yoga-server) options can be set with the `graphql.config.yogaServer` [configuration object](/developer-docs/latest/setup-deployment-guides/configurations/optional/plugins.md#graphql-configuration). Yoga Server options can be used for instance to enable the [logging feature](https://the-guild.dev/graphql/yoga-server/docs/features/logging-and-debugging). For more information visit [Yoga Server Docs](https://the-guild.dev/graphql/yoga-server/docs).
 
 ::: caution
 The maximum number of items returned by the response is limited to 100 by default. This value can be changed using the `amountLimit` configuration option, but should only be changed after careful consideration: a large query can cause a DDoS (Distributed Denial of Service) and may cause abnormal load on your Strapi server, as well as your database server.
@@ -65,8 +65,8 @@ module.exports = {
       playgroundAlways: false,
       depthLimit: 7,
       amountLimit: 100,
-      apolloServer: {
-        tracing: false,
+      yogaServer: {
+        logging: "warn",
       },
     },
   },
