@@ -85,14 +85,15 @@ The [GraphQL plugin](/developer-docs/latest/plugins/graphql.md) has the followin
 
 | Parameter          | Description                                                                                                                                                   | Type    | Default |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------- |
-| `apolloServer`     | Additional configuration for [`ApolloServer`](https://www.apollographql.com/docs/apollo-server/api/apollo-server/#apolloserver).                   | Object  | `{}`    |
+| `yogaServer`     | Additional configuration for [`GraphQL Yoga Server`](https://the-guild.dev/graphql/yoga-server/docs).                   | Object  | `{}`    |
 | `artifacts`        | Object containing filepaths, defining where to store generated artifacts. Can include the following properties: <ul><li>`schema`: path to the generated GraphQL schema file</li><li>`typegen`: path to generated TypeScript types</li></ul>Only works if `generateArtifacts` is set to `true`.  | Object  | <ul><li>`schema: false`</li><li>`typegen: false`</li></ul> |
 | `defaultLimit` | Default value for [the `pagination[limit]` parameter](/developer-docs/latest/developer-resources/database-apis-reference/graphql-api.md#pagination-by-offset) used in API calls | Integer | 100 |
 | `depthLimit`       | Limits the [complexity of GraphQL queries](https://www.npmjs.com/package/graphql-depth-limit).                                                                 | Integer  | `10`    |
 | `endpoint`         | The URL path on which the plugin is exposed | String | `/graphql` |
 | `generateArtifacts`| Whether Strapi should automatically generate and output a GraphQL schema file and corresponding TypeScript definitions.<br/><br/>The file system location can be configured through `artifacts`.  | Boolean | `false` |
 | `maxLimit`         | Maximum value for [the `pagination[limit]` parameter](/developer-docs/latest/developer-resources/database-apis-reference/graphql-api.md#pagination-by-offset) used in API calls                                                                                                              | Integer  | `-1`    |
-| `playgroundAlways` | Whether the playground should be publicly exposed.<br/><br/>Enabled by default in if `NODE_ENV` is set to `development`.                                        | Boolean | `false`  |
+| `browserIDE` | Which GraphQL browser IDE to show. This can be either `playground` or `graphiql`                                        | String | `playground`  |
+| `browserIDEAlways` | Whether the playground should be publicly exposed.<br/><br/>Enabled by default in if `NODE_ENV` is set to `development`.                                        | Boolean | `false`  |
 | `shadowCRUD`       | Whether type definitions for queries, mutations and resolvers based on models should be created automatically (see [Shadow CRUD documentation](/developer-docs/latest/plugins/graphql.md#shadow-crud)). | Boolean | `true` |
 | `subscriptions`    | Enable GraphQL subscriptions (experimental feature).                                                                                                                                 | Boolean | `false` |
 
